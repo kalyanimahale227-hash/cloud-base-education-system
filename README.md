@@ -3,12 +3,15 @@
 This project is a Flask-based Cloud Education System designed to run on AWS Cloud.
 It provides an online platform where students can browse projects and enroll, while admins can manage educational projects.
 The system uses AWS DynamoDB for database management and AWS SNS for sending notifications.
+
+
 ✅ Features
 👩‍🎓 Student Portal
 Student Signup
 Student Login
 Browse Available Projects
 Enroll in Projects
+
 👨‍💼 Admin Portal
 Admin Signup / Login
 Create Educational Projects (with image & document upload)
@@ -25,6 +28,7 @@ SNS (Simple Notification Service)
 Sends notifications for:
 New Signup
 Project Enrollment
+
 🧰 Prerequisites
 Python 3.8 or higher
 AWS Account (for deployment)
@@ -40,6 +44,7 @@ Step 2: Install Required Libraries
 Copy code
 Bash
 pip install -r requirements.txt
+
 ▶ Running Locally
 🔹 Simple Local Version (Without AWS)
 Copy code
