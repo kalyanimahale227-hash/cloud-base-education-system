@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard - Cloud Based Education System{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="page-header">
+        <h1>Student Dashboard</h1>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+
+    <p class="mb-4">Welcome, {{ username }}!</p>
+
+    <!-- My Enrolled Projects -->
+    <div class="mb-4">
+        <h3>My Enrolled Courses</h3>
+
+        {% if my_projects %}
+        <div class="grid">
+            {% for project in my_projects %}
+            <div class="card">
+
+                {% if project.image %}
+                <img src="{{ url_for('static', filename='uploads/' + project.image) }}"
+                     class="card-img">
+                {% endif %}
+
+                <h3 class="card-title">{{ project.title }}</h3>
+
+                <p><strong>Problem:</strong> {{ project.problem_statement }}</p>
+                <p><strong>Solution:</strong> {{ project.solution_overview }}</p>
+
+                {% if project.document %}
+                <a href="{{ url_for('static', filename='uploads/' + project.document) }}"
+                   target="_blank" class="btn btn-sm btn-outline-info">
+                    Download Material
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="alert alert-info">
+            You have not enrolled in any courses yet.
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Available Projects -->
+    <div>
+        <h3>Available Courses</h3>
+
+        {% if projects %}
+        <div class="grid">
+            {% for project in projects %}
+            <div class="card">
+
+                {% if project.image %}
+                <img src="{{ url_for('static', filename='uploads/' + project.image) }}"
+                     class="card-img">
+                {% endif %}
+
+                <h3 class="card-title">{{ project.title }}</h3>
+
+                <p>{{ project.problem_statement[:100] }}...</p>
+
+                <a href="{{ url_for('enroll', project_id=project.id) }}"
+                   class="btn btn-primary btn-sm">
+                   Enroll Now
+                </a>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="alert alert-warning">
+            No courses available.
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
