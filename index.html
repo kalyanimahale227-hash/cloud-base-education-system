@@ -1,104 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>CloudEdu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudEdu | Modern Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --dark-bg: #1a1d21;
+            --light-gray: #f8f9fa;
+            --text-main: #334155;
+            --success-green: #10b981;
+        }
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#eee;
-}
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--light-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-header{
-background:#d94b5a;
-padding:15px;
-color:white;
-display:flex;
-justify-content:space-between;
-}
+        /* Navigation Bar */
+        header {
+            background: var(--dark-bg);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-}
+        header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
 
-.hero{
-background:#d94b5a;
-color:white;
-text-align:center;
-padding:80px 20px;
-}
+        nav a {
+            color: #cbd5e1;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-.hero button{
-padding:10px 20px;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
+        nav a:hover {
+            color: white;
+        }
 
-.section{
-padding:40px;
-text-align:center;
-}
+        nav .btn-login {
+            border: 1px solid #475569;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
 
-.cards{
-display:flex;
-justify-content:space-around;
-}
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 8%;
+            background: white;
+            gap: 50px;
+        }
 
-.card{
-background:white;
-padding:20px;
-width:25%;
-border-radius:10px;
-box-shadow:0 0 5px gray;
-}
-</style>
+        .hero-content {
+            flex: 1;
+        }
 
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #0f172a;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: translateY(-2px);
+            background: #1d4ed8;
+        }
+
+        /* Featured Card (Right side of Hero) */
+        .featured-card {
+            flex: 0.8;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        /* Why Section & Cards */
+        .section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+    </style>
 </head>
 
 <body>
 
 <header>
-<h2>Cloud Education System</h2>
-<nav>
-<a href="/">Home</a>
-<a href="about.html">About</a>
-<a href="login.html">Login</a>
-<a href="admin_login.html">Admin Login</a>
-</nav>
+    <h2> *Cloud Education</h2>
+    <nav>
+        <a href="/">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html" class="btn-login">Login</a>
+        <a href="admin_login.html" style="background: var(--success-green); color: white; padding: 8px 16px; border-radius: 5px;">Admin Login</a>
+    </nav>
 </header>
 
 <div class="hero">
-<h1>Cloud Based Education System</h1>
-<p>Manage students, courses & projects on cloud anytime anywhere.</p>
-<button>Get Started</button>
+    <div class="hero-content">
+        <h1>Build modern learning experiences</h1>
+        <p>Manage students, courses, and projects on a secure cloud infrastructure. Professional tools for modern institutions.</p>
+        <button onclick="window.location.href='login.html'">Get Started Free</button>
+    </div>
+    
+    <div class="featured-card">
+        <span style="color: var(--primary-blue); font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Featured Track</span>
+        <h3 style="margin: 10px 0;">Product Design Foundations</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">Complete guide to UI/UX and Cloud Management strategies.</p>
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <span style="background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">8 Modules</span>
+            <span style="background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">Verified</span>
+        </div>
+    </div>
 </div>
 
 <div class="section">
-<h2>Why Cloud Education?</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Online Learning</h3>
-<p>Students can access courses remotely.</p>
-</div>
-
-<div class="card">
-<h3>Project Upload</h3>
-<p>Submit projects securely on cloud.</p>
-</div>
-
-<div class="card">
-<h3>Admin Dashboard</h3>
-<p>Manage users & content easily.</p>
-</div>
-
-</div>
+    <h2>Powerful features for education</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Remote Access</h3>
+            <p>Students can access learning materials anytime, anywhere with cloud syncing.</p>
+        </div>
+        <div class="card">
+            <h3>Secure Submissions</h3>
+            <p>Direct project uploads to cloud storage with automated timestamping.</p>
+        </div>
+        <div class="card">
+            <h3>Analytics Dashboard</h3>
+            <p>Comprehensive admin tools to track student progress and faculty performance.</p>
+        </div>
+    </div>
 </div>
 
 </body>
