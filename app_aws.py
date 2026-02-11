@@ -28,6 +28,9 @@ UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+#SNS Topic ARN(Replace with your actualSNS Topic arn)
+SNS_TOPIC_ARN ='arn:aws:sns:us-east-1:911167905203:aws_cloud_education_topic'
+
 # --- Helper Functions ---
 def send_cloud_notification(subject, message):
     """Sends a notification via AWS SNS"""
@@ -117,4 +120,5 @@ def admin_create_project():
 
 if __name__ == '__main__':
     # host='0.0.0.0' is required for EC2 to be accessible externally
+
     app.run(host='0.0.0.0', port=5000, debug=True)
