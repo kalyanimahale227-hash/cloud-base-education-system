@@ -11,7 +11,7 @@ app.secret_key = 'cloud_edu_secure_key'
 
 # --- AWS Configuration ---
 REGION = 'us-east-1' # Change to your region
-SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:123456789012:MyEduTopic' # Replace with your ARN
+#SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:123456789012:MyEduTopic' Replace with your ARN
 
 # Initialize AWS Resources
 dynamodb = boto3.resource('dynamodb', region_name=REGION)
@@ -23,13 +23,15 @@ admin_table = dynamodb.Table('AdminUsers')
 projects_table = dynamodb.Table('Projects')
 enrollments_table = dynamodb.Table('Enrollments')
 
+#SNS Topic ARN(Replace with your actualSNS Topic arn)
+SNS_TOPIC_ARN ='arn:aws:sns:us-east-1:911167905203:aws_cloud_education_topic'
+
+
 # File Upload Config (Local storage on EC2)
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-#SNS Topic ARN(Replace with your actualSNS Topic arn)
-SNS_TOPIC_ARN ='arn:aws:sns:us-east-1:911167905203:aws_cloud_education_topic'
 
 # --- Helper Functions ---
 def send_cloud_notification(subject, message):
@@ -122,3 +124,4 @@ if __name__ == '__main__':
     # host='0.0.0.0' is required for EC2 to be accessible externally
 
     app.run(host='0.0.0.0', port=5000, debug=True)
+
