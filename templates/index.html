@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; padding: 4rem 0;">
+    <h1 style="font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(to right, #60a5fa, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Innovate Your Learning Journey
+    </h1>
+    <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem;">
+        Master the future of technology with our industry-leading cloud projects and comprehensive learning modules.
+    </p>
+    
+    <div style="display: flex; gap: 1.5rem; justify-content: center;">
+        <a href="{{ url_for('auth.signup') }}" class="btn-premium">Get Started for Free</a>
+        <a href="{{ url_for('student.projects_list') }}" class="btn-premium" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);">Explore Projects</a>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem;">
+    <div class="card-glass">
+        <h3 style="color: var(--secondary); margin-bottom: 1rem;">Industry Standard</h3>
+        <p style="color: var(--text-muted);">Work on projects designed by professionals to mirror real-world cloud architecture and enterprise systemic problems.</p>
+    </div>
+    <div class="card-glass">
+        <h3 style="color: #a855f7; margin-bottom: 1rem;">Global Certification</h3>
+        <p style="color: var(--text-muted);">Get recognized for your skills with verifiable digital credentials that showcase your expertise to top recruiters.</p>
+    </div>
+    <div class="card-glass">
+        <h3 style="color: #ec4899; margin-bottom: 1rem;">Seamless Collaboration</h3>
+        <p style="color: var(--text-muted);">Submit, review, and refine your work through an integrated feedback loop with expert educators and peers.</p>
+    </div>
+</div>
+{% endblock %}

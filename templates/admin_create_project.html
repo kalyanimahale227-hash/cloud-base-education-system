@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-glass" style="max-width: 700px; margin: 0 auto;">
+    <h2 style="margin-bottom: 2rem;">Deploy New Project</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Project Title</label>
+            <input type="text" name="title" class="form-control" placeholder="e.g. AWS Serverless Architecture" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Problem Statement</label>
+            <textarea name="problem_statement" class="form-control" style="height: 120px;" placeholder="Describe the challenge..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Solution Overview</label>
+            <textarea name="solution_overview" class="form-control" style="height: 120px;" placeholder="Describe the expected solution..." required></textarea>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="form-group">
+                <label>Featured Image</label>
+                <input type="file" name="image" class="form-control" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>Project Document (PDF)</label>
+                <input type="file" name="document" class="form-control" accept=".pdf">
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit" class="btn-premium" style="flex: 1;">Deploy Project</button>
+            <a href="{{ url_for('faculty.admin_dashboard') }}" class="btn-premium" style="background: transparent; border: 1px solid var(--glass-border); width: 120px; text-align: center;">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

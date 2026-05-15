@@ -1,0 +1,5 @@
+flask
+flask-sqlalchemy
+boto3
+werkzeug
+python-dotenv

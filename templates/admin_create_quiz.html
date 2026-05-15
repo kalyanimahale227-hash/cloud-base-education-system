@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-glass" style="max-width: 800px; margin: 0 auto;">
+    <h2 style="margin-bottom: 2rem;">Design Project Quiz</h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">Project: <span style="color: var(--secondary); font-weight: 600;">{{ project.title }}</span></p>
+
+    <form method="POST" id="quiz-form">
+        <div class="form-group">
+            <label>Quiz Title</label>
+            <input type="text" name="quiz_title" class="form-control" placeholder="e.g. AWS Core Knowledge Check" required>
+        </div>
+
+        <div id="questions-container">
+            <!-- Questions will be added here -->
+            <div class="card-glass" style="background: rgba(255,255,255,0.03); margin-bottom: 2rem; padding: 1.5rem;">
+                <h4 style="margin-bottom: 1.5rem; color: var(--secondary);">Question 1</h4>
+                <div class="form-group">
+                    <label>Question Text</label>
+                    <input type="text" name="q1_text" class="form-control" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Option A</label>
+                        <input type="text" name="q1_a" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option B</label>
+                        <input type="text" name="q1_b" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option C</label>
+                        <input type="text" name="q1_c" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option D</label>
+                        <input type="text" name="q1_d" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Correct Option (A, B, C, or D)</label>
+                    <input type="text" name="q1_ans" class="form-control" maxlength="1" style="width: 60px; text-transform: uppercase;" required>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn-premium" style="flex: 2;">Save & Publish Quiz</button>
+            <a href="{{ url_for('faculty.admin_dashboard') }}" class="btn-premium" style="background: transparent; border: 1px solid var(--glass-border); flex: 1; text-align: center;">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // In a production app, we would use JS to dynamically add more questions.
+    // For this prototype, we'll process at least one question from the form.
+</script>
+{% endblock %}

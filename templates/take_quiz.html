@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-glass" style="max-width: 800px; margin: 0 auto;">
+    <h2 style="margin-bottom: 2rem;">{{ quiz.title }}</h2>
+    
+    <form method="POST">
+        {% for q in questions %}
+        <div class="card-glass" style="background: rgba(255,255,255,0.03); margin-bottom: 2rem; padding: 1.5rem;">
+            <h4 style="margin-bottom: 1.5rem; color: var(--text-white);">Question {{ loop.index }}: {{ q.text }}</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <label class="card-glass" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem; transition: background 0.3s;">
+                    <input type="radio" name="q{{ loop.index }}" value="A" required>
+                    <span><strong>A:</strong> {{ q.a }}</span>
+                </label>
+                <label class="card-glass" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem; transition: background 0.3s;">
+                    <input type="radio" name="q{{ loop.index }}" value="B">
+                    <span><strong>B:</strong> {{ q.b }}</span>
+                </label>
+                <label class="card-glass" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem; transition: background 0.3s;">
+                    <input type="radio" name="q{{ loop.index }}" value="C">
+                    <span><strong>C:</strong> {{ q.c }}</span>
+                </label>
+                <label class="card-glass" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem; transition: background 0.3s;">
+                    <input type="radio" name="q{{ loop.index }}" value="D">
+                    <span><strong>D:</strong> {{ q.d }}</span>
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <button type="submit" class="btn-premium" style="width: 250px;">Submit Answers</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    input[type="radio"]:checked + span {
+        color: var(--secondary);
+        font-weight: 700;
+    }
+</style>
+{% endblock %}

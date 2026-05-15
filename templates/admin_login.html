@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-glass" style="max-width: 450px; margin: 0 auto; border-color: rgba(248, 113, 113, 0.3);">
+    <h2 style="margin-bottom: 2rem; text-align: center; color: #f87171;">Admin Authority</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>Admin Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Admin Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn-premium" style="width: 100%; margin-top: 1rem; background: linear-gradient(135deg, #f87171, #ef4444);">Admin Login</button>
+    </form>
+    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted);">
+        System administrators only. <a href="{{ url_for('auth.admin_signup') }}" style="color: #f87171;">Request Access</a>
+    </p>
+</div>
+{% endblock %}

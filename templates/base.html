@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cloud Based Education System{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">CloudEDU Pro</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('student.home') }}">Dashboard</a>
+                <a href="{{ url_for('auth.logout') }}" style="color: #f87171;">Logout ({{ session.get('username') }})</a>
+            {% elif session.get('admin_id') %}
+                <a href="{{ url_for('faculty.admin_dashboard') }}">Admin Panel</a>
+                <a href="{{ url_for('auth.logout') }}" style="color: #f87171;">Logout Admin</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.signup') }}">Signup</a>
+                <a href="{{ url_for('auth.admin_login') }}" class="admin-link">Admin Access</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem;">
+        <p>&copy; 2026 CloudClass Pro. Powered by AWS DynamoDB & Antigravity AI.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-end;">
+    <div>
+        <h1>Admin Control <span style="color: #f87171;">Center</span></h1>
+        <p style="color: var(--text-muted);">Manage system users, projects, and educational content.</p>
+    </div>
+    <div style="display: flex; gap: 1rem;">
+        <a href="{{ url_for('faculty.admin_submissions_list') }}" class="btn-premium" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);">View Submissions</a>
+        <a href="{{ url_for('faculty.admin_create_project') }}" class="btn-premium">+ New Project</a>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
+    <div class="card-glass" style="padding: 1.5rem; text-align: center;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Total Students</p>
+        <h2 style="font-size: 2.5rem; color: var(--secondary);">{{ users|length }}</h2>
+    </div>
+    <div class="card-glass" style="padding: 1.5rem; text-align: center;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Active Projects</p>
+        <h2 style="font-size: 2.5rem; color: #a855f7;">{{ projects|length }}</h2>
+    </div>
+    <div class="card-glass" style="padding: 1.5rem; text-align: center;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Total Enrollments</p>
+        <h2 style="font-size: 2.5rem; color: #ec4899;">{{ total_enrollments }}</h2>
+    </div>
+</div>
+
+<div style="margin-bottom: 4rem;">
+    <h3 style="margin-bottom: 1.5rem;">Project Inventory</h3>
+    <div class="card-glass" style="padding: 0; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead style="background: rgba(255,255,255,0.03);">
+                <tr>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">ID</th>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">Title</th>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">Content</th>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in projects %}
+                <tr style="border-top: 1px solid var(--glass-border);">
+                    <td style="padding: 1rem;">#{{ p.id }}</td>
+                    <td style="padding: 1rem; font-weight: 600;">{{ p.title }}</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">{{ p.problem_statement[:80] }}...</td>
+                    <td style="padding: 1rem;">
+                        {% if p.image %}🖼️{% endif %}
+                        {% if p.document %}📄{% endif %}
+                    </td>
+                    <td style="padding: 1rem; display: flex; gap: 1rem;">
+                        <a href="{{ url_for('faculty.admin_add_material', pid=p.id) }}" style="color: var(--secondary); text-decoration: none; font-size: 0.8rem; font-weight: 600;">+ Material</a>
+                        <a href="{{ url_for('faculty.admin_create_quiz', pid=p.id) }}" style="color: #a855f7; text-decoration: none; font-size: 0.8rem; font-weight: 600;">+ Quiz</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <h3 style="margin-bottom: 1.5rem;">Registered Students</h3>
+    <div class="card-glass" style="padding: 0; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead style="background: rgba(255,255,255,0.03);">
+                <tr>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">ID</th>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">Username</th>
+                    <th style="padding: 1rem; text-align: left; color: var(--text-muted);">Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr style="border-top: 1px solid var(--glass-border);">
+                    <td style="padding: 1rem;">{{ u.id }}</td>
+                    <td style="padding: 1rem; font-weight: 600;">{{ u.username }}</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">{{ u.created_at.strftime('%Y-%m-%d') if u.created_at else 'N/A' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

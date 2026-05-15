@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="margin-bottom: 3rem;">
+    <h1>Cloud <span style="color: var(--secondary);">Project Library</span></h1>
+    <p style="color: var(--text-muted);">Explore our collection of industry-grade cloud engineering projects.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem;">
+    {% for p in projects %}
+    <div class="card-glass" style="display: flex; flex-direction: column;">
+        {% if p.image %}
+        <img src="{{ url_for('static', filename='uploads/' + p.image) }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+        {% endif %}
+        
+        <h3 style="margin-bottom: 1rem; color: var(--text-white);">{{ p.title }}</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1;">
+            {{ p.problem_statement[:200] }}...
+        </p>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--glass-border); pt-1.5rem; margin-top: auto;">
+            <a href="{{ url_for('student.enroll', pid=p.id) }}" class="btn-premium" style="font-size: 0.85rem;">View & Enroll</a>
+            <span style="font-size: 0.75rem; color: var(--secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Cloud Certified</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

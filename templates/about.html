@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-glass" style="max-width: 900px; margin: 0 auto; padding: 4rem;">
+    <h1 style="margin-bottom: 2rem; background: linear-gradient(to right, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        About CloudEDU Pro
+    </h1>
+    
+    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.8;">
+        CloudEDU Pro is a state-of-the-art education platform designed to bridge the gap between academic theory and industry reality. We provide students with direct access to sophisticated cloud projects, infrastructure blueprints, and hands-on deployment documentation.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem;">
+        <div>
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Our Mission</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">To democratize high-end technical education and empower the next generation of cloud architects with real-world experience.</p>
+        </div>
+        <div>
+            <h3 style="color: #a855f7; margin-bottom: 1rem;">The Platform</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Built using a robust Flask backend with SQLite/DynamoDB support, ensuring scalability and state-of-the-art security for all users.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--glass-border); text-align: center;">
+        <p style="color: var(--text-muted);">Ready to start your journey?</p>
+        <a href="{{ url_for('auth.signup') }}" class="btn-premium" style="margin-top: 1rem;">Join the Community</a>
+    </div>
+</div>
+{% endblock %}
